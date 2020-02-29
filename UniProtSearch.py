@@ -1,8 +1,8 @@
 import os
 from UniProtObject import UniProt
 import numpy as np
-from Bio.Seq import Seq
-from Bio import SeqIO
+#from Bio.Seq import Seq
+#from Bio import SeqIO
 import requests
 
 #Test UniProt
@@ -51,5 +51,19 @@ for each in sequenceListAsFasta:
     saveFile.write(each)
 
 saveFile.close
+
+
+#Create list with only the second line of each fasta sequence
+extractedLine2FromFasta = []
+sequenceEnd = 50
+
+for eachOrganism in sequenceListAsFasta:
+    searchWord = '\n'
+    search = eachOrganism.find(searchWord)
+    positionToExtract = search + 1
+    extractedLine2FromFasta.append(eachOrganism[positionToExtract:positionToExtract+sequenceEnd])
+
+print(extractedLine2FromFasta)
+
 
 print("Process Completed")
