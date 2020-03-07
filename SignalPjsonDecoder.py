@@ -85,8 +85,10 @@ print(data['SEQUENCES'])
 
 organism = extract_values(data, 'Name')
 cleavageSite = extract_values(data, 'CS_pos')
+predictionSignalPeptide = extract_values(data, 'Prediction')
 print(organism)
 print(cleavageSite)
+print(predictionSignalPeptide)
 
 #Create 2 DataFrames
 organismList = {'organism': organism}
@@ -94,12 +96,14 @@ cleavageSiteList = {'cleavage_site': cleavageSite}
 
 organismDF = pd.DataFrame(organismList)
 cleavageSiteDF = pd.DataFrame(cleavageSiteList)
+predictionListDF = pd.DataFrame(predictionSignalPeptide)
 
-combined = pd.DataFrame.join(organismDF, cleavageSiteDF)
-print(combined)
+combinedDF1 = pd.DataFrame.join(organismDF, cleavageSiteDF)
+combinedFinalDF = pd.DataFrame.join(combinedDF1, predictionListDF)
+print(combinedFinalDF)
 
-column_names = ['Organism', 'cleavage_site']
-column_datatype = ['string', 'string']
+#column_names = ['Organism', 'cleavage_site']
+#column_datatype = ['string', 'string']
 
 #schema_dict = dict(zip(column_names, column_datatype))
 #print(schema_dict)
@@ -123,7 +127,7 @@ for eachItem in cleavageSite:
 #Create DateFrame of Cleavage cleavage sites
 cleavagePositionNumber = {'Position':extractedCleavageSitePositionList}
 cleavagePositionNumberDF = pd.DataFrame(cleavagePositionNumber)
-combinedWithPositionNumber = pd.DataFrame.join(combined, cleavagePositionNumberDF)
+combinedWithPositionNumber = pd.DataFrame.join(combinedDF1, cleavagePositionNumberDF)
 print(combinedWithPositionNumber)
 
 #Add fullSequence to dataFrame
@@ -144,12 +148,43 @@ for eachOrganism in addedFullSequence.itertuples():
 #Add signal peptide sequence to dataFrame
 signalPeptideSequenceOfOrganism = {'Signal_Sequence':signalPeptideSequence}
 signalPeptideSequenceDF = pd.DataFrame(signalPeptideSequenceOfOrganism)
-finalDF = pd.DataFrame.join(addedFullSequence, signalPeptideSequenceDF)
+addedCutSequence = pd.DataFrame.join(addedFullSequence, signalPeptideSequenceDF)
 
-print(finalDF)
+#Cut sequences according to cleavage site
+#Use extractedLine2FromFasta to create new signal peptide sequence
+signalPeptideSequence = []
+
+# 3 is position and 4 is Full Sequence
+for eachOrganism in addedFullSequence.itertuples():
+    site = int(eachOrganism[3])
+    signalPeptideSequence.append(eachOrganism[4][0:site])
+
+#Add signal peptide sequence to dataFrame
+signalPeptideSequenceOfOrganism = {'Signal_Sequence':signalPeptideSequence}
+signalPeptideSequenceDF = pd.DataFrame(signalPeptideSequenceOfOrganism)
+addedSignalPeptideSequence = pd.DataFrame.join(addedFullSequence, signalPeptideSequenceDF)
+
+#Determine if protein is Lipoprotein
+#Check if Predition has the lipoprotein in the results
+isLipoproteinList = []
+
+for eachOrganism in predictionSignalPeptide:
+    findLipoprotein = eachOrganism.find('Lipoprotein')
+    print(eachOrganism)
+    if findLipoprotein != -1:
+        isLipoproteinList.append('Yes')
+    else:
+        isLipoproteinList.append('No')
+
+
+#Create DateFrame on whether Organism is a lipoprotein
+isLipoproteinResults = {'Is Lipoprotein': isLipoproteinList}
+isLipoproteinResultsDF = pd.DataFrame(isLipoproteinResults)
+combinedWithIsLipoprotein = pd.DataFrame.join(addedSignalPeptideSequence, isLipoproteinResultsDF)
+print(combinedWithIsLipoprotein)
 
 #Export to Excel
-finalDF.to_excel(r'/Users/jeffreylai/Developer/Python/Uniprot/signalSequence.xlsx')
+combinedWithIsLipoprotein.to_excel(r'/Users/jeffreylai/Developer/Python/Uniprot/signalSequence.xlsx')
 
 
 
