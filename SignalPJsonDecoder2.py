@@ -1,9 +1,10 @@
 import json
 import os
-from UniProtObject import UniProt
+from UniprotObjectFasta import UniProt
 import pandas as pd
 import requests
 
+#Code to parse JSON
 def extract_values(obj, key):
     """Pull all values of specified key from nested JSON."""
     arr = []
@@ -24,37 +25,40 @@ def extract_values(obj, key):
     results = extract(obj, arr, key)
     return results
 
+#Change Variables here before running code
 path = "/Users/jeffreylai/Developer/Python/UniprotDownload/"
-fileName = "output.json"
+fileName = "output.json" #SignalP JSON Result Summary
+
+fileNameOriginal = "dnaResult.txt" #Uniprot Fasta file submitted to SignalP
 
 #Getting Fasta Sequences
 #--------------
 #Read from File
-#Identifiers: Organism, Locus Tag, UniProtID, isLipoprotein
-fileNameOriginal = "SampleData.txt"
-file = open(path + fileNameOriginal, 'rt')
+#Identifiers: Organism, UniprotID, Description, Full Sequence
+try:
+    file = open(path + fileNameOriginal, 'r')
+except IOError:
+    print("An error was found. Either path is incorrect or file doesn't exist!")
 
-#Extract information from file
-listOfEachSearch = []
+#Extract line with > at the beginning of the line from file
+extractedLineFromSearch = []
+
 for line in file:
-    listOfEachSearch.append(line)
+    if line.startswith('>'):
+        extractedLineFromSearch.append(line)
 file.close
-
-#Clean up strip line of extraneous info
-separated = []
-for line in listOfEachSearch:
-    separated.append(line.strip())
 
 #Create new UniProt Objects and make into array
 uniprot_objects = []
 
-for eachItem in separated:
-    organism, locus_tag, id, lipoprotein = eachItem.split(',')
-    uniprot = UniProt(organism.strip('\''), locus_tag.strip('\''), id.strip('\''), lipoprotein.strip('\''))
-    uniprot_objects.append(uniprot)
+for eachItem in extractedLineFromSearch:
+    organism, uniprotID, description = eachItem.split('|')
+    fullSequence = ''
+    uniprotItem = UniProt(organism.strip('>'), uniprotID, description, fullSequence)
+    uniprot_objects.append(uniprotItem)
 
 for each in uniprot_objects:
-    info = each.organism + " " + each.locusTag + " " + each.uniprotID + " " + each.isLipoprotein
+    info = each.organism + " " + each.uniprotID + " " + each.description + " " + each.fullSequence
 
 sequenceListAsFasta = []
 for singleHttpRequest in uniprot_objects:
@@ -62,9 +66,10 @@ for singleHttpRequest in uniprot_objects:
     r = requests.get(url=URL)
     sequenceListAsFasta.append(r.text)
 
-#Create list with only the second line of each fasta sequence
+#Create list with only the second line of each fasta sequence and save as full sequence
 extractedLine2FromFasta = []
 
+index = 0
 for eachOrganism in sequenceListAsFasta:
     searchWord = '\n'
     search = eachOrganism.find(searchWord)
@@ -72,10 +77,10 @@ for eachOrganism in sequenceListAsFasta:
     sequenceEnd = len(eachOrganism) - 1
     fullSequence = eachOrganism[positionToExtract:positionToExtract + sequenceEnd].replace('\n','')
     extractedLine2FromFasta.append(fullSequence)
+    uniprot_objects[index].fullSequence = fullSequence
+    index = index + 1
 
-print(extractedLine2FromFasta)
-#--------------
-
+#---------------------------------------
 
 with open(path + fileName, "r") as read_file:
     data = json.load(read_file)
@@ -184,8 +189,8 @@ combinedWithIsLipoprotein = pd.DataFrame.join(addedSignalPeptideSequence, isLipo
 print(combinedWithIsLipoprotein)
 
 #Export to Excel
-combinedWithIsLipoprotein.to_excel(r'/Users/jeffreylai/Developer/Python/UniprotDownload/signalSequence.xlsx')
+combinedWithIsLipoprotein.to_excel(r'/Users/jeffreylai/Developer/Python/UniprotDownload/signalSequenceResults.xlsx')
 
 #create new dataframe and add join together
 
-print("Process Completed")
+print("Process Completed ; SignalP JSON Results Parsed")

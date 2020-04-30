@@ -10,7 +10,7 @@ test1 = UniProt('N_meningitidis', 'NMB1946', 'Q7DD63' ,'yes')
 
 #Read from File
 #Identifiers: Organism, Locus Tag, UniProtID, isLipoprotein
-path = "/Users/jeffreylai/Developer/Python/Uniprot/"
+path = "/Users/jeffreylai/Developer/Python/UniprotDownload/"
 fileName = "SampleData.txt"
 file = open(path + fileName, 'rt')
 
@@ -64,6 +64,5 @@ for eachOrganism in sequenceListAsFasta:
     extractedLine2FromFasta.append(eachOrganism[positionToExtract:positionToExtract+sequenceEnd])
 
 print(extractedLine2FromFasta)
-
 
 print("Process Completed")

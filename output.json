@@ -3,23 +3,23 @@
     "failedjobs": 0,
     "size": 20
   },
-  "CSV_FILE": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_protein_type.txt",
-  "MATURE_FILE": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_mature.fasta",
-  "GFF_FILE": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output.gff3",
-  "ZIP_FILE": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_all_results.zip",
+  "CSV_FILE": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_protein_type.txt",
+  "MATURE_FILE": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_mature.fasta",
+  "GFF_FILE": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output.gff3",
+  "ZIP_FILE": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_all_results.zip",
   "SEQUENCES": {
     "sp_P31728_METQ_HAEIN": {
-      "CS_pos": "Cleavage site between pos. 20 and 21: LTG-CK. Probability: 0.9905",
+      "CS_pos": "Cleavage site between pos. 20 and 21: LTG-CK. Probability: 0.9993",
       "Likelihood": [
-        0.0098,
-        0.0002,
-        0.9898,
-        0.0003
+        0.001,
+        0.0001,
+        0.9987,
+        0.0002
       ],
       "Name": "sp_P31728_METQ_HAEIN",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_P31728_METQ_HAEIN_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_P31728_METQ_HAEIN_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_P31728_METQ_HAEIN_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_P31728_METQ_HAEIN_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_P31728_METQ_HAEIN_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_P31728_METQ_HAEIN_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -29,17 +29,17 @@
       ]
     },
     "sp_Q8X8V9_METQ_ECO57": {
-      "CS_pos": "Cleavage site between pos. 22 and 23: LVG-CG. Probability: 0.9993",
+      "CS_pos": "Cleavage site between pos. 22 and 23: LVG-CG. Probability: 0.9989",
       "Likelihood": [
-        0.0008,
+        0.0014,
         0.0001,
-        0.9987,
+        0.9982,
         0.0003
       ],
       "Name": "sp_Q8X8V9_METQ_ECO57",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8X8V9_METQ_ECO57_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8X8V9_METQ_ECO57_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8X8V9_METQ_ECO57_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8X8V9_METQ_ECO57_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8X8V9_METQ_ECO57_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8X8V9_METQ_ECO57_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -49,17 +49,17 @@
       ]
     },
     "sp_Q8XC50_NLPA_ECO57": {
-      "CS_pos": "Cleavage site between pos. 23 and 24: LAG-CD. Probability: 0.9996",
+      "CS_pos": "Cleavage site between pos. 23 and 24: LAG-CD. Probability: 0.9995",
       "Likelihood": [
-        0.0007,
+        0.0008,
         0.0001,
-        0.999,
+        0.9989,
         0.0002
       ],
       "Name": "sp_Q8XC50_NLPA_ECO57",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8XC50_NLPA_ECO57_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8XC50_NLPA_ECO57_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8XC50_NLPA_ECO57_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8XC50_NLPA_ECO57_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8XC50_NLPA_ECO57_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8XC50_NLPA_ECO57_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -69,7 +69,7 @@
       ]
     },
     "sp_Q8ZH40_METQ_YERPE": {
-      "CS_pos": "Cleavage site between pos. 22 and 23: LVG-CG. Probability: 0.9991",
+      "CS_pos": "Cleavage site between pos. 22 and 23: LVG-CG. Probability: 0.9992",
       "Likelihood": [
         0.001,
         0.0001,
@@ -77,9 +77,9 @@
         0.0003
       ],
       "Name": "sp_Q8ZH40_METQ_YERPE",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8ZH40_METQ_YERPE_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8ZH40_METQ_YERPE_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8ZH40_METQ_YERPE_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8ZH40_METQ_YERPE_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8ZH40_METQ_YERPE_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8ZH40_METQ_YERPE_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -89,17 +89,17 @@
       ]
     },
     "sp_Q8ZRN1_METQ_SALTY": {
-      "CS_pos": "Cleavage site between pos. 22 and 23: LAG-CG. Probability: 0.9995",
+      "CS_pos": "Cleavage site between pos. 22 and 23: LAG-CG. Probability: 0.9905",
       "Likelihood": [
-        0.0008,
+        0.0102,
         0.0001,
-        0.9988,
+        0.9894,
         0.0003
       ],
       "Name": "sp_Q8ZRN1_METQ_SALTY",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8ZRN1_METQ_SALTY_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8ZRN1_METQ_SALTY_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_sp_Q8ZRN1_METQ_SALTY_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8ZRN1_METQ_SALTY_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8ZRN1_METQ_SALTY_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_sp_Q8ZRN1_METQ_SALTY_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -109,17 +109,17 @@
       ]
     },
     "tr_A0A384KBS9_A0A384KBS9_YERPE": {
-      "CS_pos": "Cleavage site between pos. 28 and 29: AQA-AE. Probability: 0.6621",
+      "CS_pos": "Cleavage site between pos. 28 and 29: AQA-AE. Probability: 0.8900",
       "Likelihood": [
-        0.941,
-        0.0528,
-        0.0045,
-        0.0017
+        0.9844,
+        0.0114,
+        0.0033,
+        0.0009
       ],
       "Name": "tr_A0A384KBS9_A0A384KBS9_YERPE",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_A0A384KBS9_A0A384KBS9_YERPE_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_A0A384KBS9_A0A384KBS9_YERPE_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_A0A384KBS9_A0A384KBS9_YERPE_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_A0A384KBS9_A0A384KBS9_YERPE_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_A0A384KBS9_A0A384KBS9_YERPE_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_A0A384KBS9_A0A384KBS9_YERPE_pred.txt",
       "Prediction": "Signal peptide (Sec/SPI)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -129,18 +129,18 @@
       ]
     },
     "tr_A1UTR1_A1UTR1_BARBK": {
-      "CS_pos": "Cleavage site between pos. 30 and 31: AMA-VD. Probability: 0.5010",
+      "CS_pos": "Cleavage site between pos. 20 and 21: LAA-CF. Probability: 0.7556",
       "Likelihood": [
-        0.4972,
-        0.0183,
-        0.4634,
-        0.0211
+        0.1893,
+        0.0041,
+        0.7518,
+        0.0548
       ],
       "Name": "tr_A1UTR1_A1UTR1_BARBK",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_A1UTR1_A1UTR1_BARBK_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_A1UTR1_A1UTR1_BARBK_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_A1UTR1_A1UTR1_BARBK_pred.txt",
-      "Prediction": "Signal peptide (Sec/SPI)",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_A1UTR1_A1UTR1_BARBK_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_A1UTR1_A1UTR1_BARBK_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_A1UTR1_A1UTR1_BARBK_pred.txt",
+      "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
         "TAT signal peptide (Tat/SPI)",
@@ -149,17 +149,17 @@
       ]
     },
     "tr_D5V9U5_D5V9U5_MORCB": {
-      "CS_pos": "Cleavage site between pos. 20 and 21: LAG-CS. Probability: 0.9995",
+      "CS_pos": "Cleavage site between pos. 20 and 21: LAG-CS. Probability: 0.9992",
       "Likelihood": [
-        0.0007,
-        0.0002,
-        0.9987,
-        0.0004
+        0.0012,
+        0.0001,
+        0.9983,
+        0.0003
       ],
       "Name": "tr_D5V9U5_D5V9U5_MORCB",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_D5V9U5_D5V9U5_MORCB_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_D5V9U5_D5V9U5_MORCB_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_D5V9U5_D5V9U5_MORCB_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_D5V9U5_D5V9U5_MORCB_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_D5V9U5_D5V9U5_MORCB_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_D5V9U5_D5V9U5_MORCB_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -169,17 +169,17 @@
       ]
     },
     "tr_Q0P956_Q0P956_CAMJE": {
-      "CS_pos": "Cleavage site between pos. 26 and 27: AWA-NE. Probability: 0.8845",
+      "CS_pos": "Cleavage site between pos. 26 and 27: AWA-NE. Probability: 0.9849",
       "Likelihood": [
-        0.9528,
-        0.0063,
-        0.0051,
-        0.0357
+        0.9866,
+        0.0054,
+        0.0013,
+        0.0067
       ],
       "Name": "tr_Q0P956_Q0P956_CAMJE",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0P956_Q0P956_CAMJE_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0P956_Q0P956_CAMJE_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0P956_Q0P956_CAMJE_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0P956_Q0P956_CAMJE_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0P956_Q0P956_CAMJE_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0P956_Q0P956_CAMJE_pred.txt",
       "Prediction": "Signal peptide (Sec/SPI)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -189,17 +189,17 @@
       ]
     },
     "tr_Q0PAB8_Q0PAB8_CAMJE": {
-      "CS_pos": "Cleavage site between pos. 28 and 29: VAA-TP. Probability: 0.2789",
+      "CS_pos": "Cleavage site between pos. 20 and 21: ANA-LE. Probability: 0.9675",
       "Likelihood": [
-        0.9752,
-        0.0017,
-        0.0191,
-        0.004
+        0.9965,
+        0.0001,
+        0.003,
+        0.0004
       ],
       "Name": "tr_Q0PAB8_Q0PAB8_CAMJE",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0PAB8_Q0PAB8_CAMJE_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0PAB8_Q0PAB8_CAMJE_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0PAB8_Q0PAB8_CAMJE_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0PAB8_Q0PAB8_CAMJE_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0PAB8_Q0PAB8_CAMJE_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0PAB8_Q0PAB8_CAMJE_pred.txt",
       "Prediction": "Signal peptide (Sec/SPI)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -209,17 +209,17 @@
       ]
     },
     "tr_Q0PAB9_Q0PAB9_CAMJE": {
-      "CS_pos": "Cleavage site between pos. 27 and 28: IGA-TP. Probability: 0.3594",
+      "CS_pos": "Cleavage site between pos. 20 and 21: LFA-QN. Probability: 0.9407",
       "Likelihood": [
-        0.9159,
-        0.0027,
-        0.0279,
-        0.0535
+        0.9841,
+        0.0002,
+        0.0076,
+        0.008
       ],
       "Name": "tr_Q0PAB9_Q0PAB9_CAMJE",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0PAB9_Q0PAB9_CAMJE_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0PAB9_Q0PAB9_CAMJE_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0PAB9_Q0PAB9_CAMJE_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0PAB9_Q0PAB9_CAMJE_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0PAB9_Q0PAB9_CAMJE_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0PAB9_Q0PAB9_CAMJE_pred.txt",
       "Prediction": "Signal peptide (Sec/SPI)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -229,17 +229,17 @@
       ]
     },
     "tr_Q0PAC0_Q0PAC0_CAMJE": {
-      "CS_pos": "Cleavage site between pos. 28 and 29: IGA-TP. Probability: 0.2409",
+      "CS_pos": "Cleavage site between pos. 19 and 20: SFG-AD. Probability: 0.6817",
       "Likelihood": [
-        0.7576,
-        0.0015,
-        0.1686,
-        0.0723
+        0.879,
+        0.0002,
+        0.1018,
+        0.0191
       ],
       "Name": "tr_Q0PAC0_Q0PAC0_CAMJE",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0PAC0_Q0PAC0_CAMJE_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0PAC0_Q0PAC0_CAMJE_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q0PAC0_Q0PAC0_CAMJE_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0PAC0_Q0PAC0_CAMJE_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0PAC0_Q0PAC0_CAMJE_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q0PAC0_Q0PAC0_CAMJE_pred.txt",
       "Prediction": "Signal peptide (Sec/SPI)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -249,17 +249,17 @@
       ]
     },
     "tr_Q327Y1_Q327Y1_SHIDS": {
-      "CS_pos": "Cleavage site between pos. 23 and 24: LAG-CD. Probability: 0.9992",
+      "CS_pos": "Cleavage site between pos. 23 and 24: LAG-CD. Probability: 0.9995",
       "Likelihood": [
-        0.0011,
+        0.0009,
         0.0001,
-        0.9985,
+        0.9988,
         0.0002
       ],
       "Name": "tr_Q327Y1_Q327Y1_SHIDS",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q327Y1_Q327Y1_SHIDS_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q327Y1_Q327Y1_SHIDS_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q327Y1_Q327Y1_SHIDS_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q327Y1_Q327Y1_SHIDS_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q327Y1_Q327Y1_SHIDS_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q327Y1_Q327Y1_SHIDS_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -269,17 +269,17 @@
       ]
     },
     "tr_Q32JR0_Q32JR0_SHIDS": {
-      "CS_pos": "Cleavage site between pos. 22 and 23: LVG-CG. Probability: 0.9993",
+      "CS_pos": "Cleavage site between pos. 22 and 23: LVG-CG. Probability: 0.9989",
       "Likelihood": [
-        0.0008,
+        0.0014,
         0.0001,
-        0.9987,
+        0.9982,
         0.0003
       ],
       "Name": "tr_Q32JR0_Q32JR0_SHIDS",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q32JR0_Q32JR0_SHIDS_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q32JR0_Q32JR0_SHIDS_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q32JR0_Q32JR0_SHIDS_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q32JR0_Q32JR0_SHIDS_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q32JR0_Q32JR0_SHIDS_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q32JR0_Q32JR0_SHIDS_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -289,17 +289,17 @@
       ]
     },
     "tr_Q5F501_Q5F501_NEIG1": {
-      "CS_pos": "Cleavage site between pos. 19 and 20: LAA-CG. Probability: 0.9946",
+      "CS_pos": "Cleavage site between pos. 19 and 20: LAA-CG. Probability: 0.9982",
       "Likelihood": [
-        0.0057,
-        0.0002,
-        0.9938,
-        0.0002
+        0.0022,
+        0.0001,
+        0.9976,
+        0.0001
       ],
       "Name": "tr_Q5F501_Q5F501_NEIG1",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q5F501_Q5F501_NEIG1_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q5F501_Q5F501_NEIG1_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q5F501_Q5F501_NEIG1_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q5F501_Q5F501_NEIG1_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q5F501_Q5F501_NEIG1_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q5F501_Q5F501_NEIG1_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -309,17 +309,17 @@
       ]
     },
     "tr_Q5ZUG3_Q5ZUG3_LEGPH": {
-      "CS_pos": "Cleavage site between pos. 19 and 20: LVA-CS. Probability: 0.9986",
+      "CS_pos": "Cleavage site between pos. 19 and 20: LVA-CS. Probability: 0.9994",
       "Likelihood": [
-        0.0016,
+        0.0009,
         0.0001,
-        0.998,
-        0.0003
+        0.9988,
+        0.0002
       ],
       "Name": "tr_Q5ZUG3_Q5ZUG3_LEGPH",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q5ZUG3_Q5ZUG3_LEGPH_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q5ZUG3_Q5ZUG3_LEGPH_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q5ZUG3_Q5ZUG3_LEGPH_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q5ZUG3_Q5ZUG3_LEGPH_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q5ZUG3_Q5ZUG3_LEGPH_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q5ZUG3_Q5ZUG3_LEGPH_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -329,17 +329,17 @@
       ]
     },
     "tr_Q7DD63_Q7DD63_NEIMB": {
-      "CS_pos": "Cleavage site between pos. 19 and 20: LAA-CG. Probability: 0.9948",
+      "CS_pos": "Cleavage site between pos. 19 and 20: LAA-CG. Probability: 0.9982",
       "Likelihood": [
-        0.0055,
-        0.0003,
-        0.9939,
+        0.0022,
+        0.0001,
+        0.9975,
         0.0002
       ],
       "Name": "tr_Q7DD63_Q7DD63_NEIMB",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7DD63_Q7DD63_NEIMB_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7DD63_Q7DD63_NEIMB_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7DD63_Q7DD63_NEIMB_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7DD63_Q7DD63_NEIMB_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7DD63_Q7DD63_NEIMB_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7DD63_Q7DD63_NEIMB_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -349,17 +349,17 @@
       ]
     },
     "tr_Q7MN27_Q7MN27_VIBVY": {
-      "CS_pos": "Cleavage site between pos. 22 and 23: LAG-CG. Probability: 0.9994",
+      "CS_pos": "Cleavage site between pos. 22 and 23: LAG-CG. Probability: 0.9984",
       "Likelihood": [
-        0.0009,
+        0.0021,
         0.0001,
-        0.9987,
+        0.9976,
         0.0002
       ],
       "Name": "tr_Q7MN27_Q7MN27_VIBVY",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7MN27_Q7MN27_VIBVY_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7MN27_Q7MN27_VIBVY_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7MN27_Q7MN27_VIBVY_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7MN27_Q7MN27_VIBVY_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7MN27_Q7MN27_VIBVY_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7MN27_Q7MN27_VIBVY_pred.txt",
       "Prediction": "Lipoprotein signal peptide (Sec/SPII)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -369,17 +369,17 @@
       ]
     },
     "tr_Q7VSM1_Q7VSM1_BORPE": {
-      "CS_pos": "Cleavage site between pos. 24 and 25: AQA-EK. Probability: 0.7989",
+      "CS_pos": "Cleavage site between pos. 24 and 25: AQA-EK. Probability: 0.9247",
       "Likelihood": [
-        0.9377,
-        0.0134,
-        0.0403,
-        0.0086
+        0.9732,
+        0.0037,
+        0.0215,
+        0.0016
       ],
       "Name": "tr_Q7VSM1_Q7VSM1_BORPE",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7VSM1_Q7VSM1_BORPE_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7VSM1_Q7VSM1_BORPE_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7VSM1_Q7VSM1_BORPE_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7VSM1_Q7VSM1_BORPE_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7VSM1_Q7VSM1_BORPE_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7VSM1_Q7VSM1_BORPE_pred.txt",
       "Prediction": "Signal peptide (Sec/SPI)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -389,17 +389,17 @@
       ]
     },
     "tr_Q7VTS6_Q7VTS6_BORPE": {
-      "CS_pos": "Cleavage site between pos. 23 and 24: ALA-QD. Probability: 0.9822",
+      "CS_pos": "Cleavage site between pos. 23 and 24: ALA-QD. Probability: 0.9934",
       "Likelihood": [
-        0.9971,
-        0.0007,
-        0.0016,
-        0.0006
+        0.9986,
+        0.0002,
+        0.0008,
+        0.0004
       ],
       "Name": "tr_Q7VTS6_Q7VTS6_BORPE",
-      "Plot_eps": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7VTS6_Q7VTS6_BORPE_plot.eps",
-      "Plot_png": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7VTS6_Q7VTS6_BORPE_plot.png",
-      "Plot_txt": "/services/SignalP-5.0/tmp/5E559E9D000049304C71FBBC/output_tr_Q7VTS6_Q7VTS6_BORPE_pred.txt",
+      "Plot_eps": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7VTS6_Q7VTS6_BORPE_plot.eps",
+      "Plot_png": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7VTS6_Q7VTS6_BORPE_plot.png",
+      "Plot_txt": "/services/SignalP-5.0/tmp/5EA8E6EE000060E1E01FA1B8/output_tr_Q7VTS6_Q7VTS6_BORPE_pred.txt",
       "Prediction": "Signal peptide (Sec/SPI)",
       "Protein_types": [
         "Signal peptide (Sec/SPI)",
@@ -410,5 +410,5 @@
     }
   },
   "FORMAT": "long",
-  "ORG": "Gram-positive"
+  "ORG": "Gram-negative"
 }
