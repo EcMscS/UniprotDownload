@@ -1,10 +1,11 @@
+#Modules needed for Python program to work
 import json
 import os
-from UniprotObjectFasta import UniProt
 import pandas as pd
-import requests
 
-#Code to parse JSON
+from UniprotObjectFasta import UniProt #Check fro UniprtoObjectFasta.py file
+
+#Function to parse JSON
 def extract_values(obj, key):
     """Pull all values of specified key from nested JSON."""
     arr = []
@@ -25,11 +26,17 @@ def extract_values(obj, key):
     results = extract(obj, arr, key)
     return results
 
+#------------------------------------------------------------
+####IMPORTANT####: These variables must be changed for the program to work
 #Change Variables here before running code
 path = "/Users/jeffreylai/Developer/Python/UniprotDownload/"
-fileName = "output_1623_Seq.json" #SignalP JSON Result Summary
 
-fileNameOriginal = "Uniprot_Data_for_SignalP.txt" #Uniprot Fasta file submitted to SignalP
+#These 2 files must be present in the above directory
+fileName = "output_1623_Seq.json" #SignalP JSON Result Summary
+fileNameOriginal = "Uniprot_Data_for_SignalP.txt" #Uniprot Fasta (Protein) file submitted to SignalP
+
+exportedExcelFileName = "signalSequenceResults1623.xlsx" #Excel file name that contains all the extracted data
+#-------------------------------------------------------------
 
 #Getting Fasta Sequences
 #--------------
@@ -44,23 +51,27 @@ except IOError:
 extractedLineFromSearch = []
 extractedProteinSequence = []
 
+#Initialize variable for for loop
 tempSeq = ""
 seqNum = 1
 
+#Extract information from fasta file, separate into: Organism, UniprotID, Description, and Full Protein Sequence
+#extractedLineFromSearch array contains Organism | UniprotID | description
+#extractedProteinSequence array contains each organisms full protein sequence
 for line in file:
     if line.startswith('>'):
-        extractedLineFromSearch.append(line)
+        extractedLineFromSearch.append(line) #Extract line with > with starting character
         if seqNum != 1:
-            extractedProteinSequence.append(tempSeq)
-            tempSeq = ""
-        seqNum = seqNum + 1
+            extractedProteinSequence.append(tempSeq) #Get the first sequence
+            tempSeq = "" #Clear sequence for next iteration
+        seqNum = seqNum + 1 #Increment current protein sequence
     else:
-        tempSeq = tempSeq + line.rstrip('\n')
+        tempSeq = tempSeq + line.rstrip('\n') #Append sequence with return carriage stripped
 
-extractedProteinSequence.append(tempSeq) #Get the last sequence
-file.close
+extractedProteinSequence.append(tempSeq) #Get the last sequence after the last for loop
+file.close #Close file after operations completed
 
-#Create new UniProt Objects and make into array
+#Create new UniProt Objects and store as an array
 uniprot_objects = []
 
 for eachItem in extractedLineFromSearch:
@@ -76,30 +87,6 @@ for eachSeq in extractedProteinSequence:
 
 for each in uniprot_objects:
     info = each.organism + " " + each.uniprotID + " " + each.description + " " + each.fullSequence
-
-#sequenceListAsFasta = []
-#for singleHttpRequest in uniprot_objects:
-#     URL = UniProt.urlBase + singleHttpRequest.uniprotID + UniProt.urlFileType
-#     r = requests.get(url=URL)
-#     print(r.text)
-#     sequenceListAsFasta.append(r.text)
-
-#Create list with only the second line of each fasta sequence and save as full sequence
-#extractedLine2FromFasta = []
-
-#sequenceListAsFasta -> fileNameOriginal
-#index = 0
-#or eachOrganism in fileNameOriginal:
-#    searchWord = '\n'
-#    search = eachOrganism.find(searchWord)
-#    positionToExtract = search + 1
-#    sequenceEnd = len(eachOrganism) - 1
-#    fullSequence = eachOrganism[positionToExtract:positionToExtract + sequenceEnd].replace('\n','')
-#    extractedLine2FromFasta.append(fullSequence)
-#    print("Full Seq: " + fullSequence)
-#    uniprot_objects[index].fullSequence = fullSequence
-#    index = index + 1
-
 #---------------------------------------
 
 with open(path + fileName, "r") as read_file:
@@ -112,9 +99,6 @@ print(data['SEQUENCES'])
 organism = extract_values(data, 'Name')
 cleavageSite = extract_values(data, 'CS_pos')
 predictionSignalPeptide = extract_values(data, 'Prediction')
-print(organism)
-print(cleavageSite)
-print(predictionSignalPeptide)
 
 #Create 2 DataFrames
 organismList = {'organism': organism}
@@ -126,17 +110,8 @@ predictionListDF = pd.DataFrame(predictionSignalPeptide)
 
 combinedDF1 = pd.DataFrame.join(organismDF, cleavageSiteDF)
 combinedFinalDF = pd.DataFrame.join(combinedDF1, predictionListDF)
-print(combinedFinalDF)
 
-#column_names = ['Organism', 'cleavage_site']
-#column_datatype = ['string', 'string']
-
-#schema_dict = dict(zip(column_names, column_datatype))
-#print(schema_dict)
-
-#Find pos.
-
-#Find first case where there is a cleavage site
+#Find first case where there is a cleavage site from sample
 correctIndex = 0
 for eachItem in cleavageSite:
     if len(eachItem) != 0:
@@ -149,7 +124,7 @@ searchWord = 'pos.'
 search = cleavageSite[correctIndex].find(searchWord)
 positionToExtract = search + 5
 sampleCleavageSite = cleavageSite[0][positionToExtract: positionToExtract+2]
-#print("SAMPLE: " + sampleCleavageSite)
+
 
 #Extract all positions from cleavageSiteList
 #With position number obtained from above
@@ -157,9 +132,7 @@ extractedCleavageSitePositionList = []
 
 for eachItem in cleavageSite:
     if len(eachItem) != 0:
-        #print("Cleavage: " + eachItem)
         sampleCleavageSite = eachItem[positionToExtract: positionToExtract+2]
-        #print("Site: " + sampleCleavageSite)
         extractedCleavageSitePositionList.append(sampleCleavageSite)
     else:
         extractedCleavageSitePositionList.append(0)
@@ -168,13 +141,11 @@ for eachItem in cleavageSite:
 cleavagePositionNumber = {'Position':extractedCleavageSitePositionList}
 cleavagePositionNumberDF = pd.DataFrame(cleavagePositionNumber)
 combinedWithPositionNumber = pd.DataFrame.join(combinedDF1, cleavagePositionNumberDF)
-print(combinedWithPositionNumber)
 
 #Add fullSequence to dataFrame
 fullSequenceOfOrganism = {'Full_Sequence':extractedProteinSequence}
 fullSequenceOfOrganismDF = pd.DataFrame(fullSequenceOfOrganism)
 addedFullSequence = pd.DataFrame.join(combinedWithPositionNumber, fullSequenceOfOrganismDF)
-print(addedFullSequence)
 
 #Cut sequences according to cleavage site
 #Use extractedLine2FromFasta to create new signal peptide sequence
@@ -187,11 +158,6 @@ for eachOrganism in addedFullSequence.itertuples():
     signalPeptideSequence.append(eachOrganism[4][0:site])
 
 #Add signal peptide sequence to dataFrame
-#signalPeptideSequenceOfOrganism = {'Signal_Sequence':signalPeptideSequence}
-#signalPeptideSequenceDF = pd.DataFrame(signalPeptideSequenceOfOrganism)
-#addedCutSequence = pd.DataFrame.join(addedFullSequence, signalPeptideSequenceDF)
-
-#Add signal peptide sequence to dataFrame
 signalPeptideSequenceOfOrganism = {'Signal_Sequence':signalPeptideSequence}
 signalPeptideSequenceDF = pd.DataFrame(signalPeptideSequenceOfOrganism)
 addedSignalPeptideSequence = pd.DataFrame.join(addedFullSequence, signalPeptideSequenceDF)
@@ -202,7 +168,6 @@ isLipoproteinList = []
 
 for eachOrganism in predictionSignalPeptide:
     findLipoprotein = eachOrganism.find('Lipoprotein')
-    #print("Prediction Peptide: " + eachOrganism)
     if findLipoprotein != -1:
         isLipoproteinList.append('Yes')
     else:
@@ -212,11 +177,10 @@ for eachOrganism in predictionSignalPeptide:
 isLipoproteinResults = {'Is Lipoprotein': isLipoproteinList}
 isLipoproteinResultsDF = pd.DataFrame(isLipoproteinResults)
 combinedWithIsLipoprotein = pd.DataFrame.join(addedSignalPeptideSequence, isLipoproteinResultsDF)
-print(combinedWithIsLipoprotein)
 
 #Export to Excel
-combinedWithIsLipoprotein.to_excel(r'/Users/jeffreylai/Developer/Python/UniprotDownload/signalSequenceResults1623.xlsx')
+combinedWithIsLipoprotein.to_excel(r'/Users/jeffreylai/Developer/Python/UniprotDownload/' + exportedExcelFileName)
 
-#create new dataframe and add join together
 
-print("Process Completed ; SignalP JSON Results Parsed")
+#If message is seen in console, then the program completed
+print("Process Completed ; SignalP JSON Results Parsed ; Check for Excel file: " + exportedExcelFileName)
