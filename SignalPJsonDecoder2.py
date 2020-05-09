@@ -1,4 +1,5 @@
 #Modules needed for Python program to work
+# coding=utf-8
 import json
 import os
 import pandas as pd
@@ -36,6 +37,16 @@ fileName = "output_1623_Seq.json" #SignalP JSON Result Summary
 fileNameOriginal = "Uniprot_Data_for_SignalP.txt" #Uniprot Fasta (Protein) file submitted to SignalP
 
 exportedExcelFileName = "signalSequenceResults1623.xlsx" #Excel file name that contains all the extracted data
+
+#--------------------------------------------------------------
+#Testing
+#fileName = "sample_dnaresult.json"
+#fileNameOriginal = "dnaResult.txt"
+#exportedExcelFileName = "sampleDNAresults.xlsx"
+
+#fileName = "result1.json"
+#fileNameOriginal = "Uniprot_Data_Result1.txt"
+#exportedExcelFileName = "sampleResults1.xlsx"
 #-------------------------------------------------------------
 
 #Getting Fasta Sequences
@@ -85,20 +96,58 @@ for eachSeq in extractedProteinSequence:
     uniprot_objects[index].fullSequence = eachSeq
     index = index + 1
 
+
+#Separate into array for dataframes later on
+fastaOrganism = []
+fastaUniprotID = []
+fastaDescription = []
+
 for each in uniprot_objects:
     info = each.organism + " " + each.uniprotID + " " + each.description + " " + each.fullSequence
+    fastaOrganism.append(each.organism)
+    fastaUniprotID.append(each.uniprotID)
+    fastaDescription.append(each.description)
+
 #---------------------------------------
 
 with open(path + fileName, "r") as read_file:
     data = json.load(read_file)
 
-#Prints all sequences from JSON from top level
-print(data['SEQUENCES'])
+#Testing JSON Parsing ; Prints all sequences from JSON from top level
+#print(data['SEQUENCES'])
+
+#Include fasta data
+#Organism name, UniprotID and Description
+fastaOrganismList = {'Organism_Fasta': fastaOrganism}
+fastaUniprotIDList = {'UniprotID_Fasta': fastaUniprotID}
+fastaDescriptionList = {'Description_Fasta': fastaDescription}
+
+#Create Dataframes
+organismFastaDF = pd.DataFrame(fastaOrganismList)
+uniprotIDFastaDF = pd.DataFrame(fastaUniprotIDList)
+descriptionFastaDF = pd.DataFrame(fastaDescriptionList)
+
+#Combine DataFrames
+combinedFastaDF1 = pd.DataFrame.join(uniprotIDFastaDF, organismFastaDF)
+combinedFastaDF2 = pd.DataFrame.join(combinedFastaDF1, descriptionFastaDF)
 
 #Parse JSON Function
 organism = extract_values(data, 'Name')
 cleavageSite = extract_values(data, 'CS_pos')
 predictionSignalPeptide = extract_values(data, 'Prediction')
+
+#Extract UniprotID from Organism Name
+#Sample Data: 'sp_P45491_Y984_CAMJE'
+#After first _ is the UniProtID, ID is always 6 characters
+#first, third, and fourth are not used.
+organismUniProtID = []
+for eachValue in organism:
+    first, id, third, fourth = eachValue.split('_')
+    organismUniProtID.append(id)
+
+#Create DataFrame for UniProtID for SignalP Output
+organismUniProtIDList = {'UniProtID': organismUniProtID}
+organismUniProtIDDF = pd.DataFrame(organismUniProtIDList)
 
 #Create 2 DataFrames
 organismList = {'organism': organism}
@@ -119,12 +168,10 @@ for eachItem in cleavageSite:
         break
     correctIndex = correctIndex + 1
 
-
 searchWord = 'pos.'
 search = cleavageSite[correctIndex].find(searchWord)
 positionToExtract = search + 5
 sampleCleavageSite = cleavageSite[0][positionToExtract: positionToExtract+2]
-
 
 #Extract all positions from cleavageSiteList
 #With position number obtained from above
@@ -178,9 +225,24 @@ isLipoproteinResults = {'Is Lipoprotein': isLipoproteinList}
 isLipoproteinResultsDF = pd.DataFrame(isLipoproteinResults)
 combinedWithIsLipoprotein = pd.DataFrame.join(addedSignalPeptideSequence, isLipoproteinResultsDF)
 
-#Export to Excel
-combinedWithIsLipoprotein.to_excel(r'/Users/jeffreylai/Developer/Python/UniprotDownload/' + exportedExcelFileName)
+combineWithUniProtID = pd.DataFrame.join(combinedWithIsLipoprotein, organismUniProtIDDF)
 
+#Keys for DataFrames
+signalP_Keys = combineWithUniProtID.keys()
+fasta_Keys = combinedFastaDF2.keys()
+keySignalP = signalP_Keys[-1] #Last element is UniProtID
+keyFasta = fasta_Keys[0] #First element is UniProtID
+
+#Sort DataFrame by UniProtID in ascending order
+combinedFastaDF2.sort_values(by=keyFasta, inplace=True)
+combineWithUniProtID.sort_values(by=keySignalP, inplace=True)
+
+#Merge Dataframes with matching UniProtID columns as Key
+#combineWithUniProtID and combinedWithFastaDF2
+finalDF = combinedFastaDF2.merge(combineWithUniProtID, left_on=keyFasta, right_on=keySignalP)
+
+#Export to Excel
+finalDF.to_excel(r'/Users/jeffreylai/Developer/Python/UniprotDownload/' + exportedExcelFileName)
 
 #If message is seen in console, then the program completed
 print("Process Completed ; SignalP JSON Results Parsed ; Check for Excel file: " + exportedExcelFileName)
