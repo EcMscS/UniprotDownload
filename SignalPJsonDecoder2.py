@@ -33,10 +33,10 @@ def extract_values(obj, key):
 path = "/Users/jeffreylai/Developer/Python/UniprotDownload/"
 
 #These 2 files must be present in the above directory
-fileName = "output_1623_Seq.json" #SignalP JSON Result Summary
-fileNameOriginal = "Uniprot_Data_for_SignalP.txt" #Uniprot Fasta (Protein) file submitted to SignalP
+fileName = "200513ecoli.json" #SignalP JSON Result Summary
+fileNameOriginal = "200513ecoli.txt" #Uniprot Fasta (Protein) file submitted to SignalP
 
-exportedExcelFileName = "signalSequenceResults1623.xlsx" #Excel file name that contains all the extracted data
+exportedExcelFileName = "signalSequenceResults_200513ecoli.xlsx" #Excel file name that contains all the extracted data
 
 #Getting Fasta Sequences
 #--------------
@@ -231,8 +231,16 @@ sequenceAndCleavage = pd.DataFrame.join(fullSequenceTemp, cleavagePositionTemp)
 
 signalPeptideSequence = []
 for eachOrganism in sequenceAndCleavage.itertuples():
-    site = int(eachOrganism[-1])
-    signalPeptideSequence.append(eachOrganism[1][0:site])
+    if isinstance(eachOrganism[-1], int):
+        site = int(eachOrganism[-1])
+    else:
+        site = -1
+
+    if site == -1:
+        signalPeptideSequence.append('Cleavage site out of range. Probable Protein Fragment')
+    else:
+        signalPeptideSequence.append(eachOrganism[1][0:site])
+
 
 signalPeptideSeqDF = pd.DataFrame(signalPeptideSequence)
 addedSignalPeptideDF = pd.DataFrame.join(finalDF, signalPeptideSeqDF)
