@@ -38,17 +38,6 @@ fileNameOriginal = "Uniprot_Data_for_SignalP.txt" #Uniprot Fasta (Protein) file 
 
 exportedExcelFileName = "signalSequenceResults1623.xlsx" #Excel file name that contains all the extracted data
 
-#--------------------------------------------------------------
-#Testing
-#fileName = "sample_dnaresult.json"
-#fileNameOriginal = "dnaResult.txt"
-#exportedExcelFileName = "sampleDNAresults.xlsx"
-
-#fileName = "result1.json"
-#fileNameOriginal = "Uniprot_Data_Result1.txt"
-#exportedExcelFileName = "sampleResults1.xlsx"
-#-------------------------------------------------------------
-
 #Getting Fasta Sequences
 #--------------
 #Read from File
@@ -97,16 +86,18 @@ for eachSeq in extractedProteinSequence:
     index = index + 1
 
 
-#Separate into array for dataframes later on
+#Separate into array for dataframes for later use
 fastaOrganism = []
 fastaUniprotID = []
 fastaDescription = []
+fastaFullSequence = []
 
 for each in uniprot_objects:
     info = each.organism + " " + each.uniprotID + " " + each.description + " " + each.fullSequence
     fastaOrganism.append(each.organism)
     fastaUniprotID.append(each.uniprotID)
     fastaDescription.append(each.description)
+    fastaFullSequence.append(each.fullSequence)
 
 #---------------------------------------
 
@@ -121,17 +112,28 @@ with open(path + fileName, "r") as read_file:
 fastaOrganismList = {'Organism_Fasta': fastaOrganism}
 fastaUniprotIDList = {'UniprotID_Fasta': fastaUniprotID}
 fastaDescriptionList = {'Description_Fasta': fastaDescription}
+fastaFullSequenceList = {'Full_Sequence_Fasta': fastaFullSequence}
 
 #Create Dataframes
 organismFastaDF = pd.DataFrame(fastaOrganismList)
 uniprotIDFastaDF = pd.DataFrame(fastaUniprotIDList)
 descriptionFastaDF = pd.DataFrame(fastaDescriptionList)
+fastaFullSequenceDF = pd.DataFrame(fastaFullSequenceList)
 
 #Combine DataFrames
 combinedFastaDF1 = pd.DataFrame.join(uniprotIDFastaDF, organismFastaDF)
 combinedFastaDF2 = pd.DataFrame.join(combinedFastaDF1, descriptionFastaDF)
+combinedFastaDF3 = pd.DataFrame.join(combinedFastaDF2, fastaFullSequenceDF)
 
-#Parse JSON Function
+fasta_Keys = combinedFastaDF3.keys()
+keyFasta = fasta_Keys[0] #First element is UniProtID
+combinedFastaDF3.sort_values(by=keyFasta, inplace=True)
+
+#Sorted Full Sequence from FASTA File
+fastaSortedSequence = combinedFastaDF3[['Full_Sequence_Fasta']]
+
+#------------------------------------------------------------------------------
+#Parse JSON Function from SignalP JSON Result
 organism = extract_values(data, 'Name')
 cleavageSite = extract_values(data, 'CS_pos')
 predictionSignalPeptide = extract_values(data, 'Prediction')
@@ -158,7 +160,7 @@ cleavageSiteDF = pd.DataFrame(cleavageSiteList)
 predictionListDF = pd.DataFrame(predictionSignalPeptide)
 
 combinedDF1 = pd.DataFrame.join(organismDF, cleavageSiteDF)
-combinedFinalDF = pd.DataFrame.join(combinedDF1, predictionListDF)
+#combinedFinalDF = pd.DataFrame.join(combinedDF1, predictionListDF)
 
 #Find first case where there is a cleavage site from sample
 correctIndex = 0
@@ -189,26 +191,6 @@ cleavagePositionNumber = {'Position':extractedCleavageSitePositionList}
 cleavagePositionNumberDF = pd.DataFrame(cleavagePositionNumber)
 combinedWithPositionNumber = pd.DataFrame.join(combinedDF1, cleavagePositionNumberDF)
 
-#Add fullSequence to dataFrame
-fullSequenceOfOrganism = {'Full_Sequence':extractedProteinSequence}
-fullSequenceOfOrganismDF = pd.DataFrame(fullSequenceOfOrganism)
-addedFullSequence = pd.DataFrame.join(combinedWithPositionNumber, fullSequenceOfOrganismDF)
-
-#Cut sequences according to cleavage site
-#Use extractedLine2FromFasta to create new signal peptide sequence
-signalPeptideSequence = []
-
-#PROBLEM HERE
-# 3 is position and 4 is Full Sequence
-for eachOrganism in addedFullSequence.itertuples():
-    site = int(eachOrganism[3])
-    signalPeptideSequence.append(eachOrganism[4][0:site])
-
-#Add signal peptide sequence to dataFrame
-signalPeptideSequenceOfOrganism = {'Signal_Sequence':signalPeptideSequence}
-signalPeptideSequenceDF = pd.DataFrame(signalPeptideSequenceOfOrganism)
-addedSignalPeptideSequence = pd.DataFrame.join(addedFullSequence, signalPeptideSequenceDF)
-
 #Determine if protein is Lipoprotein
 #Check if Predition has the lipoprotein in the results
 isLipoproteinList = []
@@ -223,26 +205,40 @@ for eachOrganism in predictionSignalPeptide:
 #Create DateFrame on whether Organism is a lipoprotein
 isLipoproteinResults = {'Is Lipoprotein': isLipoproteinList}
 isLipoproteinResultsDF = pd.DataFrame(isLipoproteinResults)
-combinedWithIsLipoprotein = pd.DataFrame.join(addedSignalPeptideSequence, isLipoproteinResultsDF)
+combinedWithIsLipoprotein = pd.DataFrame.join(combinedWithPositionNumber, isLipoproteinResultsDF)
 
 combineWithUniProtID = pd.DataFrame.join(combinedWithIsLipoprotein, organismUniProtIDDF)
 
 #Keys for DataFrames
-signalP_Keys = combineWithUniProtID.keys()
-fasta_Keys = combinedFastaDF2.keys()
-keySignalP = signalP_Keys[-1] #Last element is UniProtID
-keyFasta = fasta_Keys[0] #First element is UniProtID
-
 #Sort DataFrame by UniProtID in ascending order
-combinedFastaDF2.sort_values(by=keyFasta, inplace=True)
+signalP_Keys = combineWithUniProtID.keys()
+keySignalP = signalP_Keys[-1] #Last element is UniProtID
 combineWithUniProtID.sort_values(by=keySignalP, inplace=True)
+
+#print(combineWithUniProtID[['Full_Sequence_Fasta']])
+#print(combinedFastaDF3[['Full_Sequence_Fasta']])
 
 #Merge Dataframes with matching UniProtID columns as Key
 #combineWithUniProtID and combinedWithFastaDF2
-finalDF = combinedFastaDF2.merge(combineWithUniProtID, left_on=keyFasta, right_on=keySignalP)
+finalDF = combinedFastaDF3.merge(combineWithUniProtID, left_on=keyFasta, right_on=keySignalP)
+
+#Add Signal Peptide Sequence
+finalDF_Keys = finalDF.keys()
+cleavagePositionTemp = finalDF[['Position']]
+fullSequenceTemp = finalDF[['Full_Sequence_Fasta']]
+
+sequenceAndCleavage = pd.DataFrame.join(fullSequenceTemp, cleavagePositionTemp)
+
+signalPeptideSequence = []
+for eachOrganism in sequenceAndCleavage.itertuples():
+    site = int(eachOrganism[-1])
+    signalPeptideSequence.append(eachOrganism[1][0:site])
+
+signalPeptideSeqDF = pd.DataFrame(signalPeptideSequence)
+addedSignalPeptideDF = pd.DataFrame.join(finalDF, signalPeptideSeqDF)
 
 #Export to Excel
-finalDF.to_excel(r'/Users/jeffreylai/Developer/Python/UniprotDownload/' + exportedExcelFileName)
+addedSignalPeptideDF.to_excel(r'/Users/jeffreylai/Developer/Python/UniprotDownload/' + exportedExcelFileName)
 
 #If message is seen in console, then the program completed
 print("Process Completed ; SignalP JSON Results Parsed ; Check for Excel file: " + exportedExcelFileName)
