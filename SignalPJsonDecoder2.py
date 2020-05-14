@@ -182,7 +182,10 @@ extractedCleavageSitePositionList = []
 for eachItem in cleavageSite:
     if len(eachItem) != 0:
         sampleCleavageSite = eachItem[positionToExtract: positionToExtract+2]
-        extractedCleavageSitePositionList.append(sampleCleavageSite)
+        if sampleCleavageSite.isdigit():
+            extractedCleavageSitePositionList.append(int(sampleCleavageSite))
+        else:
+            extractedCleavageSitePositionList.append(-1)
     else:
         extractedCleavageSitePositionList.append(0)
 
@@ -228,16 +231,14 @@ cleavagePositionTemp = finalDF[['Position']]
 fullSequenceTemp = finalDF[['Full_Sequence_Fasta']]
 
 sequenceAndCleavage = pd.DataFrame.join(fullSequenceTemp, cleavagePositionTemp)
+#print(sequenceAndCleavage)
 
 signalPeptideSequence = []
 for eachOrganism in sequenceAndCleavage.itertuples():
-    if isinstance(eachOrganism[-1], int):
-        site = int(eachOrganism[-1])
-    else:
-        site = -1
+    site = int(eachOrganism[-1])
 
     if site == -1:
-        signalPeptideSequence.append('Cleavage site out of range. Probable Protein Fragment')
+        signalPeptideSequence.append("Cleavage site position out of range. Probable protein fragment")
     else:
         signalPeptideSequence.append(eachOrganism[1][0:site])
 
