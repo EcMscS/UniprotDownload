@@ -33,10 +33,10 @@ def extract_values(obj, key):
 path = "/Users/jeffreylai/Developer/Python/UniprotDownload/"
 
 #These 2 files must be present in the above directory
-fileName = "200513ecoli.json" #SignalP JSON Result Summary
-fileNameOriginal = "200513ecoli.txt" #Uniprot Fasta (Protein) file submitted to SignalP
+fileName = "200609_1_metQgm.json" #SignalP JSON Result Summary
+fileNameOriginal = "200609_1_metQ.txt" #Uniprot Fasta (Protein) file submitted to SignalP
 
-exportedExcelFileName = "signalSequenceResults_200513ecoli.xlsx" #Excel file name that contains all the extracted data
+exportedExcelFileName = "signalSequenceResults_200609_1_metQ.xlsx" #Excel file name that contains all the extracted data
 
 #Getting Fasta Sequences
 #--------------
